@@ -1,0 +1,19 @@
+from sklearn import svm 
+
+#features 
+X = [
+    [-3, -1],
+    [0, -2] ,
+    [-2.5, 2], 
+    [-1 , -1],
+    [3, 5], 
+    [.5, 3],
+    [-3, -3],
+ ] 
+ 
+ #labels 
+ y = [0,1,0,1,1,0,1]
+ 
+ clf = svm.SVC(kernel = 'linear').fit(X,y)
+ 
+ clf.predict([[2, 4]]) 
