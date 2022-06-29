@@ -1,0 +1,24 @@
+#diabetes classifier 
+
+import pandas as pd 
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score
+
+df = pd.read_csv (r'C:\Users\lel213\Downloads\Copy of Diabetes_Classification.csv')
+y = df[['Diabetes']]
+X = df[['Age','HDL Chol','BMI','Glucose']]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.30, random_state=0)
+
+classifier = RandomForestClassifier()
+classifier.fit(X_train,y_train.values.ravel())
+
+#accuracy of the model 
+y_pred = classifier.predict(X_test)
+print(accuracy_score(y_test, y_pred))
+
+#predict new points
+y_output = classifier.predict([[15,100,18.1,80]])
+print(y_output)
